@@ -1,6 +1,6 @@
 # Roast Me
 
-[![skills.sh](https://skills.sh/b/euxaristia/roast-me)](https://skills.sh/euxaristia/roast-me)
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://unlicense.org/)
 
 Stop asking your coding agent to be polite. Make it prove you understand your own app.
 
@@ -83,4 +83,4 @@ The point is not humiliation. The point is to make vague thinking visible before
 
 ## License
 
-MIT
+Unlicense
