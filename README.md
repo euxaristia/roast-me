@@ -2,11 +2,11 @@
 
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://unlicense.org/)
 
-Stop asking your coding agent to be polite. Make it prove you understand your own app.
+Turn "roast me" into a constructive technical conversation.
 
-`roast-me` is a skill for Codex, Claude Code, and other skill-compatible coding agents. It turns the agent into a skeptical senior engineer who interrogates you about your app, codebase, architecture, spec, assumptions, and failure modes.
+`roast-me` is a skill for Codex, Claude Code, and other skill-compatible coding agents. It turns the agent into a patient senior engineer who helps you talk through your app, codebase, architecture, spec, assumptions, and failure modes until both of you share a clearer model of the work.
 
-It asks one concrete question at a time. It scores your answer. It does not let "state flow stuff" count as an explanation.
+It maps the relevant architecture first, then asks one concrete question at a time. It follows up gently when an answer is vague. It helps turn "state flow stuff" into actual files, symbols, data shapes, event paths, tests, and tradeoffs.
 
 ## Install
 
@@ -44,10 +44,10 @@ $roast-me
 ## Use It When
 
 - You want to check whether you actually understand a feature.
-- You are about to ask an agent to build something and want to expose weak requirements first.
-- You inherited code and want to find the parts you are hand-waving.
+- You are about to ask an agent to build something and want to clarify requirements first.
+- You inherited code and want to find the parts that are not yet clear.
 - You are preparing for a review, demo, incident postmortem, or architecture discussion.
-- You want the agent to challenge a spec instead of quietly filling in gaps.
+- You want the agent to clarify a spec with you instead of quietly filling in gaps.
 
 ## Example Prompts
 
@@ -63,23 +63,26 @@ $roast-me the product spec before I hand it to an agent
 
 `roast-me` asks questions like:
 
-- Point me to the exact file and symbol.
-- Walk the execution path from the user's click to the final state change.
+- Can you point me to the exact file and symbol?
+- In `main.swift`, `Editor`, and `Input.processKeypress`, where does raw input become an editor command, and which layer may mutate buffer state?
+- Looking at `UI.refreshScreen` and the editor state type, what data is rendering allowed to read, and what state must it never change?
+- Which module owns that responsibility, and which module should not know about it?
 - What invariant has to remain true here?
-- Which test would fail if your explanation were wrong?
-- What are you assuming that the code does not guarantee?
+- What test would catch it if this explanation were incomplete?
+- What are we assuming that the code does not guarantee?
 
-Answers are scored:
+The exchange is conversational, not scored. After each answer, the agent should:
 
-- `Pass`: specific, coherent, and grounded in the code or spec.
-- `Partial`: directionally right, but missing a key mechanism or proof.
-- `Fail`: vague, incorrect, contradicted by the repo, or unable to name the path.
+- Reflect what seems concrete or useful.
+- Name any missing mechanism, unsupported claim, contradiction, or unclear term.
+- Offer a small correction when needed.
+- Ask the next question that would most improve shared understanding.
 
-The point is not humiliation. The point is to make vague thinking visible before it becomes vague software.
+The point is not evaluation. The point is mutual understanding: make unclear thinking visible before it becomes unclear software, without turning the conversation into a discouraging test.
 
 ## Reference
 
-- **[roast-me](./skills/productivity/roast-me/SKILL.md)** — Interrogate the user's understanding of an app, codebase, architecture, implementation, product spec, assumptions, and failure modes.
+- **[roast-me](./skills/productivity/roast-me/SKILL.md)** — Build shared understanding of an app, codebase, architecture, implementation, product spec, assumptions, and failure modes through constructive technical conversation.
 
 ## License
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "Roast Me"
-  short_description: "Interrogate app and code understanding"
-  default_prompt: "Use $roast-me to interrogate my understanding of this app, its code, and its spec."
+  short_description: "Build architecture-grounded app understanding"
+  default_prompt: "Use $roast-me to talk through my understanding of this app, its architecture, code, and spec until we share a clearer model."
